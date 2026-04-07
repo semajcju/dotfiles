@@ -1,0 +1,13 @@
+[time]
+command=/home/b41m/.config/i3blocks/scripts/time/time
+interval=1
+#TZ_FILE=~/.tz
+STRFTIME_FORMAT=%Y-%m-%d %H:%M
+TZONES=$DEFAULT_TZ,Brazil/East,Australia/Brisbane,Asia/Calcutta
+TZ_LABELS=,Brazil,AU,Hyderabad
+
+[battery2]
+command=/home/b41m/.config/i3blocks/scripts/battery2/battery2
+markup=pango
+interval=30
+
