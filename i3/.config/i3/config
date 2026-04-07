@@ -70,6 +70,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+
+# Auto-detect monitor setup
+exec_always --no-startup-id bash -c 'if xrandr | grep -q "HDMI-0 connected"; then xrandr --output DP-4 --primary --mode 1920x1080 --rate 144 --pos 1920x0 --output HDMI-0 --mode 1920x1080 --rate 144 --pos 0x0; else xrandr --auto; fi'
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -229,7 +233,5 @@ bindsym $mod+r mode "resize"
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-# Auto-detect monitor setup
-exec_always --no-startup-id bash -c 'if xrandr | grep -q "HDMI-0 connected"; then xrandr --output DP-4 --primary --mode 1920x1080 --rate 144 --pos 1920x0 --output HDMI-0 --mode 1920x1080 --rate 144 --pos 0x0; else xrandr --auto; fi'
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
